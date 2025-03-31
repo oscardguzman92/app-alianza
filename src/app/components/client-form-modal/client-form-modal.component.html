@@ -13,13 +13,13 @@
       <mat-label>Email</mat-label>
       <input matInput formControlName="email">
       <mat-error *ngIf="clientForm.get('email')?.hasError('required')">Email required.</mat-error>
-      <mat-error *ngIf="clientForm.get('email')?.hasError('pattern')">Insert valid email.</mat-error>
+      <mat-error *ngIf="clientForm.get('email')?.hasError('pattern')">Insert a valid email address.</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>Phone</mat-label>
       <mat-error *ngIf="clientForm.get('phone')?.hasError('required')">Phone required.</mat-error>
-      <mat-error *ngIf="clientForm.get('phone')?.hasError('pattern')">Insert valid phone (10 digits).</mat-error>
+      <mat-error *ngIf="clientForm.get('phone')?.hasError('pattern')">Enter a valid 10-digit phone number.</mat-error>
       <input matInput formControlName="phone">
     </mat-form-field>
   </div>
