@@ -6,6 +6,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Client } from '../../models/client.model';
+import { MatButtonModule } from '@angular/material/button';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
@@ -15,7 +17,9 @@ import { Client } from '../../models/client.model';
     MatDatepickerModule,
     MatNativeDateModule,
     MatFormFieldModule,
-    MatInputModule],
+    MatButtonModule,
+    MatInputModule,
+    CommonModule],
     providers: [MatDatepickerModule, MatNativeDateModule],
   templateUrl: './client-form-modal.component.html',
   styleUrl: './client-form-modal.component.scss'

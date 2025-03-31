@@ -1,43 +1,52 @@
-<h2 mat-dialog-title>{{ isEditMode ? 'Editar Cliente' : 'Crear Cliente' }}</h2>
+<h2 mat-dialog-title>{{ isEditMode ? 'Edit Client' : 'Create Client' }}</h2>
 
 <form [formGroup]="clientForm">
   <div class="container">
     <mat-form-field appearance="outline">
       <mat-label>Nombre</mat-label>
       <input matInput formControlName="name">
+      <mat-error *ngIf="clientForm.get('name')?.hasError('required')">Name required.</mat-error>
+      <mat-error *ngIf="clientForm.get('name')?.hasError('pattern')">You must include first and last name.</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>Email</mat-label>
       <input matInput formControlName="email">
+      <mat-error *ngIf="clientForm.get('email')?.hasError('required')">Email required.</mat-error>
+      <mat-error *ngIf="clientForm.get('email')?.hasError('pattern')">Insert valid email.</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
-      <mat-label>Teléfono</mat-label>
+      <mat-label>Phone</mat-label>
+      <mat-error *ngIf="clientForm.get('phone')?.hasError('required')">Phone required.</mat-error>
+      <mat-error *ngIf="clientForm.get('phone')?.hasError('pattern')">Insert valid phone (10 numbers).</mat-error>
       <input matInput formControlName="phone">
     </mat-form-field>
   </div>
 
   <div class="container">
     <mat-form-field appearance="outline">
-      <mat-label>Fecha de Inicio</mat-label>
+      <mat-label>Start Date</mat-label>
       <input matInput [matDatepicker]="startPicker" formControlName="startDate">
+      <mat-error *ngIf="clientForm.get('startDate')?.hasError('required')">Date required.</mat-error>
       <mat-datepicker-toggle matIconSuffix [for]="startPicker"></mat-datepicker-toggle>
       <mat-datepicker #startPicker></mat-datepicker>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
-      <mat-label>Fecha de Fin</mat-label>
+      <mat-label>End Date</mat-label>
       <input matInput [matDatepicker]="endPicker" formControlName="endDate">
+      <mat-error *ngIf="clientForm.get('endDate')?.hasError('required')">Date required.</mat-error>
       <mat-datepicker-toggle matIconSuffix [for]="endPicker"></mat-datepicker-toggle>
       <mat-datepicker #endPicker></mat-datepicker>
     </mat-form-field>
   </div>
+  
 
   <div class="container">
     <button mat-raised-button color="primary" (click)="saveClient()" [disabled]="clientForm.invalid">
-      {{ isEditMode ? 'Guardar Cambios' : 'Crear Cliente' }}
+      {{ isEditMode ? 'Save' : 'Create' }}
     </button>
-    <button mat-button color="warn" (click)="dialogRef.close()">Cancelar</button>
+    <button mat-button color="warn" (click)="dialogRef.close()">Cancel</button>
   </div>
 </form>
